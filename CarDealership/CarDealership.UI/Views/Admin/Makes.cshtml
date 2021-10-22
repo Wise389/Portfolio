@@ -1,0 +1,44 @@
+﻿@model CarDealership.UI.Models.MakesViewModel
+@{
+    ViewBag.Title = "Makes";
+}
+
+<h2 style="padding-top: 20px">@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+@using (Html.BeginForm("Makes", "Admin", FormMethod.Post))
+{
+    <div class="container-fluid" style="border: solid 3px; padding: 20px">
+        <div class="row">
+            <div class="form-inline" style="width: 100%">
+                <form style="max-width: 100%; align-content: flex-start">
+                        <label class="label">New Make  </label>
+                        @Html.TextBoxFor(model => model.Make.MakeName, new { @class = "form-control", @style = "margin-left: 2%" })
+                        <span class="text-danger">@Html.ValidationMessageFor(o => o.Make.MakeName, "Make Name Required")</span>
+                    <button type="submit" style="margin-left: 2%" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="padding-top: 2%; margin-left: -1.5%">
+    <table class="table table-striped" style="border: solid 2px; padding: 20px">
+        <thead>
+            <tr>
+                <th scope="col">Make</th>
+                <th scope="col">Date Added</th>
+                <th scope="col">User</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var make in Model.Makes)
+            {
+                <tr>
+                    <td>@make.MakeName</td>
+                    <td>@make.DateAdded.ToString("MM/dd/yyyy")</td>
+                    <td>@make.UserEmail</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

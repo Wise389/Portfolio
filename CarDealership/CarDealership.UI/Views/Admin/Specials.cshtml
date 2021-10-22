@@ -1,0 +1,113 @@
+﻿@model CarDealership.UI.Models.SpecialsViewModel
+@{
+    ViewBag.Title = "Specials";
+}
+
+@using (Html.BeginForm("Specials", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(false, "", new { @style = "color: red" })
+    <h2 style="padding-top: 20px">@ViewBag.Title</h2>
+    <h3>@ViewBag.Message</h3>
+    <div class="container-fluid" style="border:solid 5px">
+        <div class="row" style="padding-top: 2%">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                <label class="label">Title </label>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.Special.SpecialTitle, new { @class = "form-control" })
+                    <span class="text-danger">@Html.ValidationMessageFor(o => o.Special.SpecialTitle)</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                <label class="label">Description </label>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <div class="form-group">
+                    @Html.TextAreaFor(m => m.Special.SpecialMessage, new { @id = "Description", @class = "form-control", @row = "10" })
+                    <span class="text-danger">@Html.ValidationMessageFor(o => o.Special.SpecialMessage)</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <label class="col-xs-1 col-sm-1 col-md-1 col-lg-1">Picture</label>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <input type='file' onchange="readURL(this);" name="file" required="" />
+                <img id="blah" src="#" alt="" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <div class="form-group" style="padding:20px; margin-left: 21%">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<br />
+<br />
+
+@foreach (var special in Model.Specials)
+{
+    <div class="container-fluid" style="border:solid 5px; padding: 20px; margin-bottom: 1%">
+        <div class="row">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <img src=@special.ImageFilePath style="height:120px" alt="Vehicle Picture Not Available" />
+            </div>
+            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                <h5>
+                    @special.SpecialTitle
+                </h5>
+                <h5>
+                    @special.SpecialMessage
+                </h5>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                <button type="button" class="btn btn-primary" id="deleteSpecial" onclick="DeleteSpecial(@special.SpecialId)">Delete</button>
+            </div>
+
+        </div>
+    </div>
+}
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(200)
+                    .height(250);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    function DeleteSpecial(specialId) {
+        if (confirm("Press Ok to Continue")) {
+            $.ajax({
+                type: "DELETE",
+                url: "https://localhost:44380/Admin/DeleteSpecial?id=" + specialId,
+                success: function (data, status, xhr) {
+                    document.location.href = data;
+                },
+                error: function (jqXHR, ajaxOptions, thrownError) {
+                    alert("Status: " + ajaxOptions); alert("Error: " + thrownError);
+                }
+            });
+        }
+        else {
+        }
+    }
+
+        //$(document).ready(function () {
+        //    $("#deleteSpecial").click(function () {
+        //        var specialId = $("#thisSpecial").val();
+        //        DeleteSpecial(specialId);
+        //    });
+
+    /*});*/
+</script>

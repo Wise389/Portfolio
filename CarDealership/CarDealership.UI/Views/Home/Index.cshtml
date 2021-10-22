@@ -1,0 +1,87 @@
+﻿@model CarDealership.UI.Models.HomePageViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<style>
+    .line {
+        border-bottom: solid 3px;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+
+    .FV {
+        font-size: 30px;
+    }
+
+    .jumbotron {
+        background-image: url("../Images/BannerSale.png");
+        background-size: cover;
+        max-width: 100%;
+    }
+
+    .Announcement {
+        text-align: left;
+        margin-left: 30%;
+        font-weight: bold;
+    }
+    
+</style>
+@* Add margin top *@
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        @for (int i = 1; i < Model.Specials.Count; i++)
+        {
+            <li data-target="#carouselExampleIndicators" data-slide-to="i"></li>
+        }
+    </ol>
+    <div class="carousel-inner">
+        <div class="jumbotron jumbotron-fluid carousel-item active" style="color: goldenrod; font-weight: bold;">
+            <div class="container" style="margin-left: 20%">
+                <h1 class="display-4">Big Huge Sale!!!</h1>
+                <p class="lead" style="color: white">Supporting text and disclaimers.</p>
+            </div>
+        </div>
+        @* Need to set size for constant banner  *@
+        @foreach (var item in Model.Specials)
+        {
+            <div id="featured" class="jumbotron carousel-item" >
+                <a href="Home/Specials">
+                    <h1 style="color: goldenrod; margin-left: 20%">@item.SpecialTitle</h1>
+                    <p style="color: goldenrod; margin-left: 20%">@item.SpecialMessage</p>
+                </a>
+            </div>
+        }
+
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<div class="line"></div>
+<div class="FV">Featured Vehicles</div>
+<div class="row">
+    @foreach (CarDealership.Models.Vehicle vehicle in Model.Featured)
+    {
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" style="margin-bottom: 27px">
+            <div style="border: 1px solid; height:180px; padding-top: 6%">
+                @*<img style=" display: block; width: 100px; height: 92px; margin: 35px auto 35px auto;" src="~/Images/carIcon.png" />*@
+                <div>
+                    <img src=@vehicle.ImgUrl style="height: 100px; width: 100px; margin-left: 30%;" alt="Vehicle Picture Not Available" />
+                </div>
+                <div style="display: block; text-align: center">@vehicle.Year.ToString() @vehicle.Make.MakeName @vehicle.Model.ModelName</div>
+                <div style="text-align: center; ">@vehicle.SalesPrice.ToString("C2")</div>
+            </div>
+        </div>
+    }
+</div>

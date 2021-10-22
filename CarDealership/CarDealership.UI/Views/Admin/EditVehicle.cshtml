@@ -1,0 +1,175 @@
+﻿@model CarDealership.UI.Models.EditVehicleViewModel
+
+@{
+    ViewBag.Title = "Edit Vehicle";
+}
+<style>
+    .label {
+        font-weight: bold;
+        /*font-size:19px;*/
+    }
+</style>
+
+@* Nav bar needs to change for admin access *@
+@using (Html.BeginForm("EditVehicle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.Vehicle.VehicleId);
+    @* Nav bar needs to change for admin access *@
+<div class="container-fluid">
+    <h2 style="padding-top:20px">@ViewBag.Title</h2>
+    <h3>@ViewBag.Message</h3>
+    <div class="row">
+        <div class="col-xs-8 col-sm-8 col-md-5 col-lg-4">
+            <form style="max-width: 100%; align-content: flex-start">
+                <div class="form-group">
+                    @* need to default to actual Make / Error Object not set to a value*@
+                    @Html.LabelFor(m => m.Vehicle.Make, new { @class = "label" })
+                    @Html.DropDownListFor(model => model.Vehicle.Make.MakeId, Model.Makes, "Select Make", new { @class = "form-control", @style = "justify-content:start" })
+                    <span class="text-danger">@Html.ValidationMessageFor(o => o.Vehicle.Make.MakeId, "Make Name Required")</span>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Vehicle.Condition, new { @class = "label" })
+                    @Html.DropDownListFor(m => m.Vehicle.Condition,
+                        new SelectList(Enum.GetValues(typeof(CarDealership.Models.Enumerations.Condition))),
+                        "Select Condition", new { @class = "form-control", @style = "justify-content:start" })
+                    <span class="text-danger">@Html.ValidationMessageFor(o => o.Vehicle.Condition)</span>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Vehicle.Year, new { @class = "label" })
+                    @Html.TextBoxFor(m => m.Vehicle.Year, new { @class = "form-control" })
+                    <span class="text-danger">@Html.ValidationMessageFor(o => o.Vehicle.Year)</span>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Vehicle.Color, new { @class = "label" })
+                    @Html.DropDownListFor(m => m.Vehicle.Color,
+                        new SelectList(Enum.GetValues(typeof(CarDealership.Models.Enumerations.Color))),
+                        "Select Color", new { @class = "form-control", @style = "justify-content:start" })
+                    <span class="text-danger">@Html.ValidationMessageFor(o => o.Vehicle.Color)</span>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Vehicle.Mileage, new { @class = "label" })
+                    @Html.TextBoxFor(m => m.Vehicle.Mileage, new { @class = "form-control" })
+                    <span class="text-danger">@Html.ValidationMessageFor(o => o.Vehicle.Mileage)</span>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Vehicle.MSRP, new { @class = "label" })
+                    @Html.TextBoxFor(m => m.Vehicle.MSRP, new { @class = "form-control" })
+                    <span class="text-danger">@Html.ValidationMessageFor(o => o.Vehicle.MSRP)</span>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="form-group">
+                @* need to default to actual Model *@
+                @Html.LabelFor(m => m.Vehicle.Model, new { @class = "label" })
+                @Html.DropDownListFor(model => model.Vehicle.Model.ModelId, Model.Models, "Select Model", new { @class = "form-control", @style = "justify-content:start" })
+                <span class="text-danger">@Html.ValidationMessageFor(o => o.Vehicle.Model.ModelId, "Model Name Required")</span>
+            </div>
+            <div class="form-group">
+                <label class="label">Body Style</label>
+                @Html.DropDownListFor(m => m.Vehicle.BodyStyle,
+                    new SelectList(Enum.GetValues(typeof(CarDealership.Models.Enumerations.BodyStyle))),
+                    "Select Body Style", new { @class = "form-control", @style = "justify-content:start" })
+                <span class="text-danger">@Html.ValidationMessageFor(o => o.Vehicle.BodyStyle)</span>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Vehicle.Transmission, new { @class = "label" })
+                @Html.DropDownListFor(m => m.Vehicle.Transmission,
+                    new SelectList(Enum.GetValues(typeof(CarDealership.Models.Enumerations.Transmission))),
+                    "Select Transmission", new { @class = "form-control", @style = "justify-content:start" })
+                <span class="text-danger">@Html.ValidationMessageFor(o => o.Vehicle.Transmission)</span>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Vehicle.Interior, new { @class = "label" })
+                @Html.DropDownListFor(m => m.Vehicle.Interior,
+                    new SelectList(Enum.GetValues(typeof(CarDealership.Models.Enumerations.Interior))),
+                    "Select Condition", new { @class = "form-control", @style = "justify-content:start" })
+                <span class="text-danger">@Html.ValidationMessageFor(o => o.Vehicle.Interior)</span>
+            </div>
+            <div class="form-group">
+                <label class="label">VIN #</label>
+                @Html.TextBoxFor(m => m.Vehicle.VIN, new { @class = "form-control" })
+                <span class="text-danger">@Html.ValidationMessageFor(o => o.Vehicle.VIN)</span>
+            </div>
+            <div class="form-group">
+                <label class="label">Sale Price</label>
+                @Html.TextBoxFor(m => m.Vehicle.SalesPrice, new { @class = "form-control" })
+                <span class="text-danger">@Html.ValidationMessageFor(o => o.Vehicle.SalesPrice)</span>
+            </div>
+        </div>
+
+    </div>
+    @* Description needs to span the width of both columns *@
+
+    <div class="form-group">
+        <label class="label">Description</label>
+        @Html.TextAreaFor(m => m.Vehicle.Description, new { @class = "form-control" })
+        <span class="text-danger">@Html.ValidationMessageFor(o => o.Vehicle.Description)</span>
+    </div>
+
+    <div>
+        @{
+            var url = Model.Vehicle.ImgUrl;
+        }
+        @Html.HiddenFor(o => o.Vehicle.ImgUrl)
+        <img src=@url style="height:120px" alt="Vehicle Picture Not Available" />
+    </div>
+    <label class="label">Replace Picture</label>
+    <div class="form-group">
+
+        <input type='file' onchange="readURL(this);" name="file" />
+        <img id="blah" src="#" alt="" />
+    </div>
+    <div class="form-group">
+        <label class="label" style="display:inline">
+            Feature this vehicle
+            @Html.CheckBoxFor(m => m.Vehicle.Featured, new { @class = "form-control", @style = "height: 20px; width:20px" })
+        </label>
+    </div>
+    @* Delete button needs to be updated *@
+    @*@Html.ActionLink("Delete", "DeleteVehicle", "Admin", new { id = Model.Vehicle.VehicleId }, new { @class = "btn btn-primary" })*@
+    <button type="button" class="btn btn-primary" id="deleteVehicle" onclick="DeleteVehicle(@Model.Vehicle.VehicleId)" >Delete</button>
+    <button type="submit" class="btn btn-primary" id="saveEdit">Save</button>
+
+</div>
+}
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(200)
+                    .height(250);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function DeleteVehicle(vehicleId) {
+        if (confirm("Press Ok to Continue")) {
+            $.ajax({
+                type: "DELETE",
+                url: "https://localhost:44380/Admin/DeleteVehicle?id=" + vehicleId,
+                success: function (data, status, xhr) {
+                    document.location = 'https://localhost:44380/Admin/Vehicles';
+                },
+                error: function (jqXHR, ajaxOptions, thrownError) {
+                    alert("Status: " + ajaxOptions); alert("Error: " + thrownError);
+                }
+            });
+        }
+        else {
+        }
+    }
+
+    //$(document).ready(function () {
+    //    $("#deleteVehicle").click(function () {
+    //        var vehicleId = $("#thisVehicle").val();
+    //        DeleteVehicle(vehicleId);
+    //    });
+
+    //});
+</script>

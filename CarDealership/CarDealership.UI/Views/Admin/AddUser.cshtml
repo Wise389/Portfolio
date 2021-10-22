@@ -1,0 +1,73 @@
+﻿@model CarDealership.Models.User
+@{
+    ViewBag.Title = "Add User";
+}
+<style>
+    .textBox{
+        width: 100%;
+    }
+</style>
+@* Nav bar needs to change for admin access *@
+<h2 style="padding-top: 20px">@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+@using (Html.BeginForm("AddUser", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-8 col-sm-8 col-md-5 col-lg-4">
+                <form style="max-width: 100%; align-content: flex-start">
+                    <div class="form-group">
+                        <div>
+                            <label class="label">First Name</label>
+                        </div>
+                        @Html.TextBoxFor(model => model.FirstName, new { @class = "form-Control textBox"})
+                        <span class="text-danger">@Html.ValidationMessageFor(o => o.FirstName)</span>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <label class="label">Email</label>
+                        </div>
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-Control textBox" })
+                        <span class="text-danger">@Html.ValidationMessageFor(o => o.Email)</span>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <label class="label">Password</label>
+                        </div>
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-Control textBox" })
+                        <span class="text-danger">@Html.ValidationMessageFor(o => o.Password)</span>
+                    </div>
+                </form>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <div class="form-group">
+                    <div>
+                        <label class="label">Last Name</label>
+                    </div>
+                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-Control textBox" })
+                    <span class="text-danger">@Html.ValidationMessageFor(o => o.LastName)</span>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <label class="label">Role</label>
+                    </div>
+                    @Html.DropDownListFor(m => m.Role,
+                 new SelectList(Enum.GetValues(typeof(CarDealership.Models.Enumerations.Role))),
+                 "Select Role", new { @class = "form-control  textBox", @style = "justify-content:start; width: 38%" })
+                    <span class="text-danger">@Html.ValidationMessageFor(o => o.Role)</span>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <label class="label">Confirm Password</label>
+                    </div>
+                    @Html.PasswordFor(model => model.ConfirmationPassword, new { @class = "form-Control textBox" })
+                    <span class="text-danger">@Html.ValidationMessageFor(o => o.ConfirmationPassword)</span>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+}
+
+
+

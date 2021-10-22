@@ -1,0 +1,39 @@
+﻿@model List<CarDealership.Models.Special>
+@{
+    ViewBag.Title = "Specials";
+}
+
+<style>
+    .container4rowsNimage{
+        display:inline;
+    }
+</style>
+<h2 style="padding-top: 20px">@ViewBag.Title</h2>
+
+<!--There is an error here-->
+
+@foreach (var special in Model)
+{
+
+<div class="container-fluid" style="border:solid 5px; padding: 20px">
+    <div class="container4rowsNimage">
+        
+        <div class="row">
+            <div class="col-2">
+                <img src=@special.ImageFilePath style="height:60px" alt="Vehicle Picture Not Available" />
+            </div>
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                <h5>
+                    @Html.DisplayFor(model => special.SpecialTitle, new { @style = "font-weight:bold" })
+                </h5>
+                <h5>
+                    @Html.DisplayFor(model => special.SpecialMessage)
+                </h5>
+            </div>
+        </div>
+        </div>
+</div>
+    <br />
+}
+
+@* display Special that was clicked on *@

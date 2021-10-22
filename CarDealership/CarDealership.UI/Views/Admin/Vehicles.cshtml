@@ -1,0 +1,104 @@
+﻿@model List<CarDealership.Models.Vehicle>
+@{
+
+    ViewBag.Title = "Admin";
+
+}
+<style>
+    .line {
+        border-bottom: solid 3px;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+    /*.h2{
+              font-size: 12px;
+          }*/
+</style>
+<h2 style="padding-top:20px">@ViewBag.Title</h2>
+<div class="link" style="padding-bottom:20px">
+    @*<a href="~/Views/Admin/AddVehicle.cshtml">Add a new Vehicle</a>*@
+    @Html.ActionLink("AddVehicle", "AddVehicle", "Admin", new {@class = "btn btn-primary btn-sm"})
+</div>
+
+<div class="container-fluid" style="border:solid 5px; padding: 20px">
+    <div class="row">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <form style="max-width: 100%; align-content: flex-start">
+                <div class="form-group">
+                    <label for="SearchKeyword" style="font-weight:600">Quick Search</label>
+                    <input type="text" class="form-control" id="searchString" placeholder="Enter make, model, or year">
+                </div>
+            </form>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <br />
+            <div class="form-group">
+                <div class="form-inline">
+                    <label for="SearchPrice" style="margin-left: 4%; font-weight: 500">Price</label>
+                    <select class="form-control" id="minPrice" style="margin-left: 2%">
+                        <option>No Min</option>
+                        <option>1000</option>
+                        <option>5000</option>
+                        <option>10000</option>
+                        <option>15000</option>
+                    </select>
+                    <select class="form-control" id="maxPrice" style="margin-left: 5%">
+                        <option>No Max</option>
+                        <option>1000</option>
+                        <option>5000</option>
+                        <option>10000</option>
+                        <option>15000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <br />
+            <div class="form-group">
+                <div class="form-inline">
+                    <label for="SearchYear" style="font-weight:500">Year</label>
+                    <select class="form-control" id="minYear" style=" max-width: 40%; margin-left: 2%">
+                        <option>No Min</option>
+                        <option>2000</option>
+                        <option>2005</option>
+                        <option>2010</option>
+                        <option>2015</option>
+                        <option>2020</option>
+                    </select>
+                    <select class="form-control" id="maxYear" style="max-width: 40%; margin-left: 5%">
+                        <option>No Max</option>
+                        <option>2000</option>
+                        <option>2005</option>
+                        <option>2010</option>
+                        <option>2015</option>
+                        <option>2020</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <button type="submit" class="btn btn-primary btn-lg btn-block" style="max-width: 100%; justify-content:center" id="VehiclesSearch">Search</button>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+    </div>
+</div>
+
+
+<h2>Search Results</h2>
+<div id="VehiclesSearchContainer"></div>
+   
+
+   @*Html.ActionLink("Edit", "EditVehicle", "Admin", new { id = vehicle.VehicleId}, new {@class = "btn btn-primary"})*@
+    
+
+<script>
+
+    let bodyStyles = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Enum.GetNames(typeof(CarDealership.Models.Enumerations.BodyStyle))));
+    let transmission = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Enum.GetNames(typeof(CarDealership.Models.Enumerations.Transmission))));
+    let color = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Enum.GetNames(typeof(CarDealership.Models.Enumerations.Color))));
+    let interior = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Enum.GetNames(typeof(CarDealership.Models.Enumerations.Interior))));
+
+</script>        

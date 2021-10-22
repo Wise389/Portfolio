@@ -1,0 +1,93 @@
+﻿@model CarDealership.Models.Vehicle
+@* Nav bar needs to change for admin access *@
+
+<h2>@ViewBag.Title</h2>
+
+@* ToDo, button and styling *@
+<div class="container-fluid" style="border:solid 5px; padding: 20px">
+    <div class="row">
+        <div class="col-xs-8 col-sm-8 col-md-5 col-lg-4">
+            @Html.DisplayFor(model => model.Year)
+            @Html.DisplayFor(model => model.Make.MakeName)
+            @Html.DisplayFor(model => model.Model.ModelName)
+        </div>
+    </div>
+    <div class="row" style="justify-content:center">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <h5></h5>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <h5>
+                @Html.LabelFor(m => m.BodyStyle)
+                @Html.DisplayFor(model => model.BodyStyle, new { @style = "font-weight:bold" })
+            </h5>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <h5>
+                @Html.LabelFor(m => m.Interior)
+                @Html.DisplayFor(model => model.Interior)
+            </h5>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <h5>
+                @Html.LabelFor(m => m.SalesPrice)
+                @Html.DisplayFor(model => model.SalesPrice)
+            </h5>
+        </div>
+    </div>
+    <div class="row" style="justify-content:center">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <h5></h5>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <h5>
+                @Html.LabelFor(m => m.Transmission)
+                @Html.DisplayFor(model => model.Transmission)
+            </h5>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <h5>
+                @Html.LabelFor(m => m.Mileage)
+                @Html.DisplayFor(model => model.Mileage)
+            </h5>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <h5>
+                @Html.LabelFor(m => m.MSRP)
+                @Html.DisplayFor(model => model.MSRP)
+            </h5>
+        </div>
+    </div>
+    <div class="row" style="justify-content:center">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <h5></h5>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <h5>
+                @Html.LabelFor(m => m.Color)
+                @Html.DisplayFor(model => model.Color)
+            </h5>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <h5>
+                @Html.LabelFor(m => m.VIN)
+                @Html.DisplayFor(model => model.VIN)
+            </h5>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <h5></h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <h5></h5>
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <h5>
+                @Html.LabelFor(m => m.Description)
+                @Html.DisplayFor(model => model.Description)
+            </h5>
+        </div>
+    </div>
+</div>
+

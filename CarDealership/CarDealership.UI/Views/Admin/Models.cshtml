@@ -1,0 +1,81 @@
+﻿@model CarDealership.UI.Models.ModelsViewModel
+
+@{
+    ViewBag.Title = "Models";
+}
+
+<h2 style="padding-top: 20px">@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+@using (Html.BeginForm("Models", "Admin", FormMethod.Post))
+{
+    <div class="container-fluid" style="border: solid 2px; padding: 20px">
+        <div class="row">
+            <div class="form-inline" style="width: 100%">
+                <form style="max-width: 100%; align-content: flex-start">
+                    <label class="label">New Model  </label>
+                    @Html.TextBoxFor(model => model.Model.ModelName, new { @class = "form-control", @style = "margin-left: 2%; margin-right: 2%" })
+                    @Html.HiddenFor(model => model.Model.Make.MakeName, new { @id = "MakeName" })
+                    @* ERROR - MAKE REGESTERING AS AN ENUM *@
+                    @*@Html.LabelFor(m => m.Make)
+                    @Html.DropDownListFor(m => m.Model.Make.MakeId,
+        new SelectList(Model.Makes, Model.Make.MakeName),
+        "Select Make", new { @class = "form-control", @style = "justify-content:start; width:25%" })*@
+                    @* Playing with a "Dynamic list" https://stackoverflow.com/questions/22371763/the-viewdata-item-that-has-the-key-is-of-type-system-int32-but-must-be-of-type *@
+                    @*@Html.DropDownList(Model.Make.MakeName, Model.Makes, "Select Make",
+        new { @class = "form-control", @id = "MakeName", @style = "margin-left: 2%" })*@
+                    @Html.LabelFor(m => m.Model.Make, new { @class = "label" })
+                    @Html.DropDownListFor(model => model.Model.Make.MakeId, Model.Makes, "Select Make", new { @class = "form-control", @style = "justify-content:start", @id = "AssociatedMake" })
+                    <span class="text-danger">@Html.ValidationMessageFor(o => o.Model.Make.MakeId, "Make Name Required")</span>
+                    <button type="submit" style="margin-left: 2%" class="btn btn-primary">Save</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+}
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style=" padding-top: 1%; margin-left: -1.5%">
+    <table class="table table-striped" style="border: solid 2px; width:100%;">
+        <thead>
+            <tr>
+                <th scope="col">Make</th>
+                <th scope="col">Model</th>
+                <th scope="col">Date Added</th>
+                <th scope="col">User</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in Model.Models)
+            {
+            <tr>
+                <td>@m.Make.MakeName</td>
+                <td>@m.ModelName</td>
+                <td>@m.DateAdded.ToString("MM/dd/yyyy")</td>
+                <td>@m.UserEmail</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@*<script>
+    $(document).ready(function () {
+        $("#AssociatedMake").change(function () {
+            $.ajax({
+                type: "GET",
+                url: "https://localhost:44380/associatedModels" + "?MakeId=" + $("#AssociatedMake").val(),
+                dataType: 'json',
+                success: function (modelList) {
+                    $("#AssociatedModel").empty();
+                    var el = $("#AssociatedModel");
+                    $.each(modelList, function (i, item) {
+                        el.append($("<option></option>")
+                            .attr("value", item.Value).text(item.Text));
+                    });
+
+                },
+                error: function (jqXHR, ajaxOptions, thrownError) {
+                    alert("Status: " + ajaxOptions); alert("Error: " + thrownError);
+                }
+            });
+
+</script>*@
+

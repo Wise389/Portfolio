@@ -1,0 +1,219 @@
+﻿@model CarDealership.Models.PurchaseViewModel
+
+@{
+    ViewBag.Title = "Purchase Vehicle";
+}
+
+<style>
+    .line {
+        border-bottom: solid 3px;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+
+    .label {
+        font-weight: bold;
+        /*font-size:19px;*/
+    }
+</style>
+<h2 style="padding-top:20px">@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+@*@Html.Partial("VehicleDetail", Model)*@
+<div class="container-fluid" style="border:solid 5px; padding: 20px">
+    <div class="row">
+        <div class="col-xs-8 col-sm-8 col-md-5 col-lg-4">
+            <h7 class="label">
+                @Html.DisplayFor(model => model.Vehicle.Year)
+                @Html.DisplayFor(model => model.Vehicle.Make.MakeName)
+                @Html.DisplayFor(model => model.Vehicle.Model.ModelName)
+                @Html.HiddenFor(o => o.Vehicle.VehicleId)
+                
+            </h7>
+        </div>
+    </div>
+    <div class="row container4rowsNimage">
+        <div class=" col-2 image">
+            <h5>
+                <img class="carPic" style="width:100px; height:100px" src=@Model.Vehicle.ImgUrl alt="Vehicle Picture Not Available" />
+            </h5>
+        </div>
+        <div class="col-10 container4rows" style="padding-top: 16px">
+            <div class="row" style="justify-content:center">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <h7>
+                        <label class="label">Body Style: </label>
+                        @Html.DisplayFor(model => model.Vehicle.BodyStyle, new { @style = "font-weight:bold" })
+                        @Html.HiddenFor(model => model.Vehicle.VehicleId)
+                    </h7>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <h7 style="margin-left: 6%">
+                        <label class="label">Interior: </label>
+                        @Html.DisplayFor(model => model.Vehicle.Interior)
+                    </h7>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <h7 style="margin-left: 19%">
+                        <label class="label">Sales Price: $</label>
+                        @Html.DisplayFor(model => model.Vehicle.SalesPrice)
+                    </h7>
+                </div>
+            </div>
+            <div class="row" style="justify-content:center">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <h7 style="margin-left: 20%">
+                        <label class="label">Trans: </label>
+                        @Html.DisplayFor(model => model.Vehicle.Transmission)
+                    </h7>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <h7 style="margin-left: 5%">
+                        <label class="label">Mileage: </label>
+                        @Html.DisplayFor(model => model.Vehicle.Mileage)
+                    </h7>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <h7 style="margin-left: 32%">
+                        <label class="label">MSRP: $</label>
+                        @Html.DisplayFor(model => model.Vehicle.MSRP)
+                    </h7>
+                </div>
+            </div>
+            <div class="row" style="justify-content:center">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <h7 style="margin-left: -18%">
+                        <label class="label">Color: </label>
+                        @Html.DisplayFor(model => model.Vehicle.Color)
+                    </h7>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <h7 style="margin-left: -16%">
+                        <label class="label">VIN #: </label>
+                        @Html.DisplayFor(model => model.Vehicle.VIN);
+                    </h7>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <h5></h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <h5></h5>
+                </div>
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                    <h7 style="margin-left: -16%">
+                        <label class="label">Description: </label>
+                        @Html.DisplayFor(model => model.Vehicle.Description)
+                    </h7>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<h2 style="padding-top:20px">Sales Information</h2>
+<br />
+@* Posting customer data *@
+@using (Html.BeginForm("Purchase", "Sales", FormMethod.Post))
+{
+    @Html.ValidationSummary(false, "", new { @style = "color: red" })
+    <div class="container-fluid" style="margin-left: -1%">
+        <div class="row">
+            <div class="col-xs-8 col-sm-8 col-md-5 col-lg-4">
+                <div style="max-width: 100%; align-content: flex-start; font-weight:bold">
+                    @Html.HiddenFor(o => o.Vehicle.VehicleId)
+                    @Html.HiddenFor(o => o.Sale.SalesId)
+                    @Html.HiddenFor(o => o.Vehicle.MSRP)
+                    @Html.HiddenFor(o => o.Vehicle.SalesPrice)
+                    @Html.HiddenFor(o => o.Vehicle.Transmission)
+                    @Html.HiddenFor(o => o.Vehicle.ImgUrl)
+                    @Html.HiddenFor(o => o.Vehicle.Interior)
+                    @Html.HiddenFor(o => o.Vehicle.BodyStyle)
+                    @Html.HiddenFor(o => o.Vehicle.Condition)
+                    @Html.HiddenFor(o => o.Vehicle.Color)
+                    @Html.HiddenFor(o => o.Vehicle.Description)
+                    @Html.HiddenFor(o => o.Vehicle.Model.ModelName)
+                    @Html.HiddenFor(o => o.Vehicle.Make.MakeName)
+                    @Html.HiddenFor(o => o.Vehicle.Year)
+                    @Html.HiddenFor(o => o.Vehicle.Mileage)
+                    @Html.HiddenFor(o => o.Vehicle.VIN)
+                    <div class="form-group">
+                        <label class="label">Name</label>
+                        @Html.TextBoxFor(m => m.Sale.Customer.Name, new { @class = "form-control" })
+                        <span class="text-danger">@Html.ValidationMessageFor(o => o.Sale.Customer.Name)</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label">Email</label>
+                        @Html.TextBoxFor(m => m.Sale.Customer.Email, new { @class = "form-control" })
+                        <span class="text-danger">@Html.ValidationMessageFor(o => o.Sale.Customer.Email, "Phone Number or Email Required")</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="label">Street 1</label>
+                        @Html.TextBoxFor(m => m.Sale.Customer.Street1, new { @class = "form-control" })
+                        <span class="text-danger">@Html.ValidationMessageFor(o => o.Sale.Customer.Street1, "Street Address 1 is required")</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="label">City</label>
+                        @Html.TextBoxFor(m => m.Sale.Customer.City, new { @class = "form-control" })
+                        <span class="text-danger">@Html.ValidationMessageFor(o => o.Sale.Customer.City, "City is required")</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="label">Zipcode</label>
+                        @Html.TextBoxFor(m => m.Sale.Customer.Zipcode, new { @class = "form-control" })
+                        <span class="text-danger">@Html.ValidationMessageFor(o => o.Sale.Customer.Zipcode, "Zipcode is required and must be 5 digits long")</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <div class="form-group">
+                    <label class="label">Phone</label>
+                    @Html.TextBoxFor(m => m.Sale.Customer.Phone, new { @class = "form-control" })
+                    <span class="text-danger">@Html.ValidationMessageFor(o => o.Sale.Customer.Phone, "Phone Number or Email required")</span>
+                </div>
+                <br />
+                <br />
+                <div class="form-group">
+                    <label for="Street2">  </label>
+                    <input type="hidden" class="form-control" id="Street2">
+                </div>
+                <div class="form-group">
+                    <label class="label">Street 2</label>
+                    @Html.TextBoxFor(m => m.Sale.Customer.Street2, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label class="label">State</label>
+                    @Html.DropDownListFor(m => m.Sale.Customer.State,
+                        new SelectList(Enum.GetValues(typeof(CarDealership.Models.Enumerations.State))),
+                        "Select State", new { @class = "form-control", @style = "justify-content:start; width:25%" })
+                </div>
+            </div>
+
+        </div>
+        <div class="line"></div>
+        <div class="row">
+            <div class="col-xs-8 col-sm-8 col-md-5 col-lg-4">
+                <div style="max-width: 100%; align-content: flex-start">
+                    <div class="form-group">
+                        <label class="label">Purchase Price</label>
+                        @Html.TextBoxFor(m => m.Sale.PurchasePrice, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <div class="form-group">
+                    <label class="label">Purchase Type</label>
+                    @Html.DropDownListFor(m => m.Sale.SalesType,
+                        new SelectList(Enum.GetValues(typeof(CarDealership.Models.Enumerations.SalesType))),
+                        "Select Financing", new { @class = "form-control", @style = "justify-content:start; width:50%" })
+                </div>
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Purchase</button>
+        </div>
+    </div>
+}
+
+

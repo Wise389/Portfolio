@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            </button>
+            <a href="/Home/Index">
+                <img src="/Images/carIcon.png" style="width:58px; height:43px; padding-right: 9px">
+            </a>
+            @*@Html.ImageActionLink(Url.Content("~/Images/carIcon.png"), "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+            <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item" style="margin-right: 20px">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="nav-item" style="margin-right: 20px">@Html.ActionLink("New Inventory", "New", "Inventory")</li>
+                    <li class="nav-item" style="margin-right: 20px">@Html.ActionLink("Used Inventory", "Used", "Inventory")</li>
+                    <li class="nav-item" style="margin-right: 20px">@Html.ActionLink("Specials", "Specials", "Home")</li>
+                    <li class="nav-item" style="margin-right: 20px">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li class="nav-item" style="margin-right: 20px">@Html.ActionLink("Sales", "Index", "Sales")</li>
+                    <li class="nav-item" style="margin-right: 20px">@Html.ActionLink("Vehicles", "Vehicles", "Admin")</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/Search.js"></script>
+</body>
+</html>
+
+

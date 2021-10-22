@@ -1,0 +1,148 @@
+﻿@model CarDealership.Models.Vehicle
+@* Nav bar needs to change for admin access *@
+<style>
+    .label{
+        font-weight:bold;
+        font-size: 16px;
+    }
+    .display{
+        font-weight:normal;
+        font-size: 16px;
+    }
+    .year-make-model {
+        font-weight: bold
+    }
+    .col-xs-8 col-sm-8 col-md-5 col-lg-4{
+        display: inline
+    }
+    /*.col-xs-2 col-sm-2 col-md-2 col-lg-2 {
+        display: inline
+    }*/
+    .col-xs-3 col-sm-3 col-md-3 col-lg-3{
+        display: inline
+    }
+    .row3 {
+        display: inline;
+    }
+    .image{
+        grid-row-start: 2;
+        grid-row-end: 5;
+    }
+</style>
+<div><h3 style="padding-top: 30px;">
+    Vehicle Details
+</h3></div>
+
+
+
+
+@* ToDo, button and styling *@
+<div class="container-fluid" style="border:solid 5px; padding: 20px">
+    <div class="row">
+        <div class="col-xs-8 col-sm-8 col-md-5 col-lg-4 year-make-model"> @* MakeName and ModelName aren't appearing *@
+            @Html.DisplayFor(o => o.Year)
+            @Html.DisplayFor(o => o.Make.MakeName)
+            @Html.DisplayFor(o => o.Model.ModelName)
+        </div>
+        
+    </div>
+    <div class="row container4rowsNimage">
+    <div class=" col-2 image" style="display:inline">
+        <img src=@Model.ImgUrl style="height:120px" alt="Vehicle Picture Not Available" />
+    </div>
+    <div class="col-10 container4rows">
+        <div class="row" style="justify-content:center">
+            @*<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <h5></h5>
+            </div>*@
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <h5 style="margin-left: 15%">
+                    <label class="label">Body Style: </label>
+                    <span class="display">@Html.DisplayFor(model => model.BodyStyle)</span>
+                </h5>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <h5 style="margin-left: 13%">
+                    <label class="label">Interior: </label>
+                    <span class="display">@Html.DisplayFor(model => model.Interior)</span>
+                </h5>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <h5  style="margin-left: 44%">
+                    <label class="label">Sale Price: </label>
+                    <span class="display">@String.Format("{0:C0}", Model.SalesPrice)</span>
+                </h5>
+            </div>
+        </div>
+        <div class="row" style="justify-content:center">
+            @*<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <h5></h5>
+            </div>*@
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <h5 style="margin-left: 35%">
+                    <label class="label">Trans: </label>
+                    <span class="display">@Html.DisplayFor(model => model.Transmission)</span>
+                </h5>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <h5  style="margin-left: 12%">
+                    <label class="label">Mileage: </label>
+                    <span class="display">@Html.DisplayFor(model => model.Mileage)</span>
+                </h5>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <h5 style="margin-left: 54%">
+                    <label class="label">MSRP: </label>
+                    <span class="display">@String.Format("{0:C0}", Model.MSRP)</span>
+                </h5>
+            </div>
+        </div>
+        <div class="row" style="justify-content:center">
+            @*<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <h5></h5>
+            </div>*@
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <h5 style="margin-left: -42%">
+                    <label class="label">Color: </label>
+                    <span class="display">@Html.DisplayFor(model => model.Color)</span>
+                </h5>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <h5 style="margin-left: -37%">
+                    <label class="label">VIN #: </label>
+                    <span class="display">@Html.DisplayFor(model => model.VIN)</span>
+                </h5>
+            </div>
+            @*<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <h5></h5>
+            </div>*@
+        </div>
+        <div class="row">
+            @*<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <h5></h5>
+            </div>*@
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                <h5 style="margin-left: 8%">
+                    <label class="label">Description: </label>
+                    <span class="display">@Html.DisplayFor(model => model.Description)</span>
+                    @Html.HiddenFor(m => m.Sold, new { id = "sold" })
+                </h5>
+            </div>
+        </div>
+        </div>
+    </div>
+        <div>
+            <h5 style="margin-left: 84%">
+                @{
+                    if (Model.Sold == false)
+                    {
+                        @Html.ActionLink("Contact Us", "Contact", "Home", new { vin = (Model.VIN ?? "") }, new { @class = "btn btn-primary" })
+                    }
+                    else
+                    {
+                        @Html.Label("Unavailable-Sold")
+                    }
+                }
+            </h5>
+        </div>
+    </div>

@@ -1,0 +1,64 @@
+﻿@model CarDealership.UI.Models.SalesReportViewModel
+@{
+    ViewBag.Title = "Sales Report";
+}
+
+<h2 style="padding-top: 2%">@ViewBag.Title</h2>
+
+
+<div class="container-fluid" style="border: solid 5px; padding-top: 2%; padding-bottom: 2%; margin-bottom: 3%">
+    <div class="row">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="form-group">
+                <div class="form-inline">
+                    @Html.LabelFor(m => m.User)
+                    @* Needs to be UserName but facing issues about SelectList with non enums *@
+                    @Html.DropDownListFor(model => model.User.UserId, Model.Users, "Select User",
+                   new { @class = "form-control", @style = "justify-content:start", @id = "User" })
+                    @*@Html.DropDownList(User.Identity., User.Identity.Name, "Select Role",
+        new { @class = "form-control  textBox", @style = "justify-content:start; width: 38%" })*@
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="form-group">
+                <div class="form-inline">
+                    <label for="StartDate">From Date</label>
+                    <input type="text" class="form-control" id="StartDate" />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="form-group">
+                <div class="form-inline">
+                    <label for="EndDate">To Date</label>
+                    <input type="text" class="form-control" id="EndDate" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <button type="submit" class="btn btn-primary btn-lg btn-block" style="max-width: 100%; justify-content:center" id="SalesReportSearch">Search</button>
+    </div>
+</div>
+<div class="container-fluid" id ="SalesReportContainer"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-8 col-sm-8 col-md-5 col-lg-4">
+            <!--<h3>Sales Report</h3>
+            <table class="table table-striped" style="border: solid 2px;">
+                <tbody>-->
+                    @*@foreach (var report in Model)
+                    {
+                        <tr>
+                        <td>@report.SalesPerson.FirstName, "", @report.User.LastName</td>
+                        <td>@report.TotalSales</td>
+                        <td>@report.VehichelsSold</td>
+                        </tr>
+                    }*@
+                <!--</tbody>
+            </table>-->
+        </div>
+    </div>
+</div>

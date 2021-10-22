@@ -1,0 +1,131 @@
+﻿@model List<CarDealership.Models.Vehicle>
+@{
+    ViewBag.Title = "Used Vehicles";
+}
+<style>
+    .label {
+        font-weight: bold;
+        font-size: 16px;
+    }
+    .line {
+        border-bottom: solid 3px;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+    .display {
+        font-weight: normal;
+        font-size: 16px;
+    }
+
+    .year-make-model {
+        font-weight: bold
+    }
+
+    .col-xs-8 col-sm-8 col-md-5 col-lg-4 {
+        display: inline
+    }
+    /*.col-xs-2 col-sm-2 col-md-2 col-lg-2 {
+        display: inline
+    }*/
+    .col-xs-3 col-sm-3 col-md-3 col-lg-3 {
+        display: inline
+    }
+
+    .row3 {
+        display: inline;
+    }
+
+    .image {
+        grid-row-start: 2;
+        grid-row-end: 5;
+    }
+    .container, .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+        width: 100%;
+        padding-right: 0px;
+        padding-left: 0px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+</style>
+
+<h2 style="padding-top: 20px">@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+<div class="container-fluid" style="border: solid 5px; padding: 20px;">
+    <div class="row">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <form style="max-width: 100%; align-content: flex-start">
+                <div class="form-group">
+                    <label for="searchString">Quick Search</label>
+                    <input type="text" class="form-control" id="searchString" placeholder="Enter make, model, or year">
+                </div>
+            </form>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <br />
+            <div class="form-group">
+                <div class="form-inline">
+                    <label for="SearchPrice" style="margin-left: 4%; margin-right: 2%;">Price</label>
+                    <select class="form-control" id="minPrice" style="justify-content:start; margin-right: 7%">
+                        <option>No Min</option>
+                        <option>1000</option>
+                        <option>5000</option>
+                        <option>10000</option>
+                        <option>15000</option>
+                    </select>
+                    <select class="form-control" id="maxPrice" style="justify-content:start">
+                        <option>No Max</option>
+                        <option>1000</option>
+                        <option>5000</option>
+                        <option>10000</option>
+                        <option>15000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <br />
+            <div class="form-group">
+                <div class="form-inline">
+                    <label for="SearchYear" style="margin-left: 4%; margin-right: 2%;">Year</label>
+                    <select class="form-control" id="minYear" style="max-width: 40%; justify-content:start; margin-right: 7%">
+                        <option>No Min</option>
+                        <option>2000</option>
+                        <option>2005</option>
+                        <option>2010</option>
+                        <option>2015</option>
+                        <option>2020</option>
+                    </select>
+                    <select class="form-control" id="maxYear" style="max-width: 40%; justify-content:start">
+                        <option>No Max</option>
+                        <option>2000</option>
+                        <option>2005</option>
+                        <option>2010</option>
+                        <option>2015</option>
+                        <option>2020</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <button type="submit" class="btn btn-primary btn-lg btn-block" style="max-width: 100%; justify-content:center" id="UsedSearch">Search</button>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+    </div>
+</div>
+
+
+<h2>Search Results</h2>
+<div class="container-fluid" id="UsedVehiclesContainer"></div>
+
+
+<script>
+
+    let bodyStyles = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Enum.GetNames(typeof(CarDealership.Models.Enumerations.BodyStyle))));
+    let transmission = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Enum.GetNames(typeof(CarDealership.Models.Enumerations.Transmission))));
+    let color = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Enum.GetNames(typeof(CarDealership.Models.Enumerations.Color))));
+    let interior = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Enum.GetNames(typeof(CarDealership.Models.Enumerations.Interior))));
+
+</script>
