@@ -29,23 +29,23 @@ August 2017 – February 2019
 
 SKILLS
 
--ASP.NET MVC
--C#
--REST Using Web API
--SQL Server 2017
--Test Driven Development
--Common Architecture Patterns
--Visual Studio 2019/NUnit
--ADO.Net/Entity Framework
--SQL Server Mgmt Studio
--Object Oriented Programming
--Data/Class Modeling
--Dapper
--Bootstrap Framework
--HTML/CSS/Javascript
--Version Control (Git)
--Debugging Techniques
--Education/Certification
+- ASP.NET MVC
+- C#
+- REST Using Web API
+- SQL Server 2017
+- Test Driven Development
+- Common Architecture Patterns
+- Visual Studio 2019/NUnit
+- ADO.Net/Entity Framework
+- SQL Server Mgmt Studio
+- Object Oriented Programming
+- Data/Class Modeling
+- Dapper
+- Bootstrap Framework
+- HTML/CSS/Javascript
+- Version Control (Git)
+- Debugging Techniques
+- Razor
 
 EDUCATION
 
