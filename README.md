@@ -15,17 +15,17 @@ August 2012 - Present
 
 Savage, North Canton, Oh — Data Entry Clerk
 April 2019 – October 2019
--Responsible for taking contractor work details and applying costs to billing
--Responsible for compiling data from on-site technicians
--Required to review data for completion and execution of necessary follow-up to verify materials used
--Create billing statements using all applicable state and local taxes
+- Responsible for taking contractor work details and applying costs to billing
+- Responsible for compiling data from on-site technicians
+- Required to review data for completion and execution of necessary follow-up to verify materials used
+- Create billing statements using all applicable state and local taxes
 
 Royal Docks Brewing Co. Canton, Oh —Brewer & Cellarman
 August 2017 – February 2019
--Responsible for brewing and designing new beers as well as general maintenance of brewery functions.
--Management of cask program, showcasing an almost forgotten tradition.
--Cleaning and maintenance to ensure the highest quality beer and day to day functions of the brewery.
--Brewing beer according to the schedule laid out by the brewmaster.
+- Responsible for brewing and designing new beers as well as general maintenance of brewery functions.
+- Management of cask program, showcasing an almost forgotten tradition.
+- Cleaning and maintenance to ensure the highest quality beer and day to day functions of the brewery.
+- Brewing beer according to the schedule laid out by the brewmaster.
 
 SKILLS
 
