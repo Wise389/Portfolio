@@ -1,24 +1,65 @@
-# Welcome to your TSG Apprentice Work Repo!
-Congratulations on joining The Software Guild, Apprentice!
+Jon Wise
+C# .Net Developer
 
-You have accepted your assignment, and as a reward you now have a brand new github repository to store & version control all your hard work during your stay with the cohort!
+wisejg89@gmail.com
 
-## First Steps - Git It Out of the Cloud, and on your Machine!
-- #### Make sure you have Git installed on your local machine
-- #### Clone this repository into a well known location (Hint: Your Documents folder is a good idea)
-  * You can find the git link in the link to the top right. _<details><summary>Expand for visual how-to example...</summary><img src=".github/imgs/clone-link.gif" alt="Github Clone Link Location"/></details>_
-  * Use your terminal to navigate to the correct folder & clone! _<details><summary>Expand for visual how-to example...</summary><img src=".github/imgs/clone-repo.gif" alt="Github Clone Link"/></details>_
-- #### Navigate to that location and configure your user settings!
-  _<details><summary>Expand for visual how-to example...</summary><img src=".github/imgs/config-repo.gif" alt="Configure Repo"/></details>_
-  
-## Continuing work - Your Daily Classwork Workflow
-Most of your day-to-day work will be done using this workflow. You'll be coding up interesting things, saving your work into this repo's Classwork folder, and using the following workflow to store it into Git!
+EXPERIENCE
 
-**[Read through the Classwork Workflow ReadMe](Classwork/README.md)** inside the Classwork Folder for more details on this workflow and how to use it to save your work.
+Wisp, North Canton, Oh  — C# .Net Developer
+August 2012 - Present
+- An endeavor to change the conversation and how people communicate online.
+- Designing and developing a community focused platform
+- Creating a space that promotes interaction between users with similar communication styles.
+- Using C# .NET Framework as a backbone for a clean and reactive user interface.
+- Developing API connections to implement up to date content feeds, automating processes.
 
-## Proving Mastery - The Assignment Submission Workflow
-Every Milestone within the cohort has a Summative Assignment. 
+Savage, North Canton, Oh — Data Entry Clerk
+April 2019 – October 2019
+-Responsible for taking contractor work details and applying costs to billing
+-Responsible for compiling data from on-site technicians
+-Required to review data for completion and execution of necessary follow-up to verify materials used
+-Create billing statements using all applicable state and local taxes
 
-This is the work that you'll submit to your instructor to review and grade, demonstrating your mastery of that particular Milestone's concepts. The workflow for this submission is different than the daily classwork workflow - so make sure you're familiar with how it works.
+Royal Docks Brewing Co. Canton, Oh —Brewer & Cellarman
+August 2017 – February 2019
+-Responsible for brewing and designing new beers as well as general maintenance of brewery functions.
+-Management of cask program, showcasing an almost forgotten tradition.
+-Cleaning and maintenance to ensure the highest quality beer and day to day functions of the brewery.
+-Brewing beer according to the schedule laid out by the brewmaster.
 
-**[Read through the Summative workflow ReadMe](Summatives/README.md)** inside the Summatives Folder for more details on this workflow's expectations on how to check in your summative assignments.
+SKILLS
+
+-ASP.NET MVC
+-C#
+-REST Using Web API
+-SQL Server 2017
+-Test Driven Development
+-Common Architecture Patterns
+-Visual Studio 2019/NUnit
+-ADO.Net/Entity Framework
+-SQL Server Mgmt Studio
+-Object Oriented Programming
+-Data/Class Modeling
+-Dapper
+-Bootstrap Framework
+-HTML/CSS/Javascript
+-Version Control (Git)
+-Debugging Techniques
+-Education/Certification
+
+EDUCATION
+
+Associates/Finance
+Kent State University
+2010 - 2015
+
+C# .Net Certification
+The Software Guild
+2019 - 2021
+
+Microsoft A+ Certification
+2007
+
+
+
+
