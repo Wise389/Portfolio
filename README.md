@@ -51,6 +51,8 @@ SKILLS
 - Version Control (Git)
 - Debugging Techniques
 - Razor
+- VUE.js
+- React
 
 EDUCATION
 
