@@ -9,6 +9,7 @@ EXPERIENCE
 
 The Software Guild, Remote - Apprentice
 December  2019 - September 2021
+
 The Software Guild is an intensive, fast-paced apprenticeship program that produces .NET / C# full-stack software developers.
 - Wrote and designed a program using the MVC format which manages storage, creation, and modification of RPG characters.
 - Used C# and the .NET Framework to create a business application for a flooring company that allows users to add, delete, and edit clients and orders. The     program was also able to read and write to files to allow for product and state tax updates.
