@@ -6,13 +6,16 @@ wisejg89@gmail.com
 
 EXPERIENCE
 
-Wisp, North Canton, Oh  — C# .Net Developer
-August 2012 - Present
-- An endeavor to change the conversation and how people communicate online.
-- Designing and developing a community focused platform
-- Creating a space that promotes interaction between users with similar communication styles.
-- Using C# .NET Framework as a backbone for a clean and reactive user interface.
-- Developing API connections to implement up to date content feeds, automating processes.
+
+The Software Guild, Remote - Apprentice
+December  2019 - September 2021
+The Software Guild is an intensive, fast-paced apprenticeship program that produces .NET / C# full-stack software developers.
+- Wrote and designed a program using the MVC format which manages storage, creation, and modification of RPG characters.
+- Used C# and the .NET Framework to create a business application for a flooring company that allows users to add, delete, and edit clients and orders. The     program was also able to read and write to files to allow for product and state tax updates.
+- Designed and wrote a website for a restaurant which incorporates multiple pages, imagery, and internal links using HTML, CSS and Bootstrap.
+- Built a website for a DVD library, utilizing Javascript to dynamically update the web page.
+- Utilized Github for version control, workflow management, and team communication.
+
 
 Savage, North Canton, Oh — Data Entry Clerk
 April 2019 – October 2019
